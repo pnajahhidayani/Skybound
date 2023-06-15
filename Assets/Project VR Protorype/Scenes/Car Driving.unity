@@ -771,7 +771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151924870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.38, y: -0.74, z: -0}
+  m_LocalPosition: {x: -0.38, y: -0.77, z: -0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 1180981060}
-  m_OriginBaseGameObject: {fileID: 151924870}
+  m_OriginBaseGameObject: {fileID: 911785803}
   m_CameraFloorOffsetObject: {fileID: 1471340648}
   m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
@@ -1157,6 +1157,7 @@ Transform:
   - {fileID: 2074190789}
   - {fileID: 1309428914}
   - {fileID: 124577751}
+  - {fileID: 1164977943}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1315,6 +1316,7 @@ GameObject:
   - component: {fileID: 446600173}
   - component: {fileID: 446600172}
   - component: {fileID: 446600176}
+  - component: {fileID: 446600177}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -1421,6 +1423,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b182ecb6343c44d957aa89744f061a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &446600177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446600171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1001 &465795583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2398,6 +2419,7 @@ MonoBehaviour:
   finalScoreText: {fileID: 294140799}
   timeText: {fileID: 1614689079}
   gameOver: {fileID: 446600171}
+  continousMoveProvider: {fileID: 151924874}
 --- !u!4 &911785805
 Transform:
   m_ObjectHideFlags: 0
@@ -2579,6 +2601,7 @@ MonoBehaviour:
   engineSound: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   coinSound: {fileID: 8300000, guid: 102fe8c13d9e7294cbf2d1ffb3cb3106, type: 3}
   explosionSound: {fileID: 8300000, guid: 9bc87eac1cc27aa488cfd8831f0104de, type: 3}
+  boostSound: {fileID: 0}
 --- !u!4 &1078440323
 Transform:
   m_ObjectHideFlags: 0
@@ -3166,6 +3189,54 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!1 &1164977942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164977943}
+  - component: {fileID: 1164977944}
+  m_Layer: 0
+  m_Name: BoostManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1164977943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164977942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 314563106}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1164977944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164977942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7594a4b7cad5546ade6e6b3b4bec2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostPrefabs:
+  - {fileID: 2674621598873007657, guid: fb75d8c8e2248504a80a840d05294623, type: 3}
+  numberOfBoosts: 1
+  playerTransform: {fileID: 911785805}
 --- !u!1 &1180981056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,12 +3292,12 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: Vector3
-      m_Id: 
+      m_Id: 53f06a42-6f31-4658-b830-9ac8d757cca2
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 
+        m_Id: 3354c9bd-8d88-4a19-873b-2fd163a80f41
         m_Path: <XRHMD>/centerEyePosition
         m_Interactions: 
         m_Processors: 
@@ -3249,12 +3320,12 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: Quaternion
-      m_Id: 
+      m_Id: 63fc3f3d-2831-4ac1-9219-60cb158389d5
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 
+        m_Id: 10b36e26-ee7d-4440-9bca-bbe549d227b3
         m_Path: <XRHMD>/centerEyeRotation
         m_Interactions: 
         m_Processors: 
@@ -3277,7 +3348,7 @@ MonoBehaviour:
       m_Name: Tracking State
       m_Type: 0
       m_ExpectedControlType: Integer
-      m_Id: 
+      m_Id: 3fb3aabe-4f08-4a07-8922-ddf7d1f6c7fe
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []

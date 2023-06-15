@@ -8,7 +8,7 @@ public class CoinManager : MonoBehaviour
     private float zSpawn = 0;
     private float xSpawn = 0;
     private float ySpawn = 0;
-    private float coinLength = 30;
+    private float coinLength = 40;
     public int numberOfCoins = 5;
     public Transform playerTransform;
     private List<GameObject> activeCoins = new List<GameObject>();

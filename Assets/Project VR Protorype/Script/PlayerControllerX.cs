@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class PlayerControllerX : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class PlayerControllerX : MonoBehaviour
     public TextMeshProUGUI timeText;
     private float timeElapsed;
     public GameObject gameOver;
+    public ContinuousMoveProviderBase continousMoveProvider;
 
     // Start is called before the first frame update
     void Start()
     {
+        continousMoveProvider.enabled = true;
         AudioManager.instance.PlayEngineSound(gameObject);
         scoreText.gameObject.SetActive(true);
         scoreText.text = "Score: " + score;
@@ -37,12 +40,20 @@ public class PlayerControllerX : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Coin")) {
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
             score++;
             Destroy(other.gameObject);
             scoreText.text = "Score: " + score;
             AudioManager.instance.PlayCoinSound();
+        }
+        else if (other.gameObject.CompareTag("Boost"))
+        {
+            StartCoroutine(BoostCoroutine());
+            Destroy(other.gameObject);
+            AudioManager.instance.PlayBoostSound();
         }
     }
 
@@ -56,6 +67,14 @@ public class PlayerControllerX : MonoBehaviour
             scoreText.gameObject.SetActive(false);
             AudioManager.instance.StopEngineSound(gameObject);
             AudioManager.instance.PlayExplosionSound();
+            continousMoveProvider.enabled = false;
         }
+    }
+
+    IEnumerator BoostCoroutine()
+    {
+        speed += 5;
+        yield return new WaitForSeconds(3);
+        speed -= 5;
     }
 }

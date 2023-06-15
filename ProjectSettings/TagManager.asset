@@ -7,6 +7,7 @@ TagManager:
   - SpawnTrigger
   - Coin
   - Enemy
+  - Boost
   layers:
   - Default
   - TransparentFX

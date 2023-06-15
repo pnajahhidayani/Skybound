@@ -5,12 +5,10 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-
     public AudioClip engineSound;
-
     public AudioClip coinSound;
-
     public AudioClip explosionSound;
+    public AudioClip boostSound;
 
     void Awake() {
         if (instance == null) {
@@ -45,5 +43,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayExplosionSound() {
         PlayClip(explosionSound);
+    }
+
+    public void PlayBoostSound() {
+        PlayClip(boostSound);
     }
 }
