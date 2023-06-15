@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip coinSound;
     public AudioClip explosionSound;
     public AudioClip boostSound;
+    public AudioSource bgm;
+    public AudioClip bgmClip;
 
     void Awake() {
         if (instance == null) {
@@ -47,5 +49,27 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBoostSound() {
         PlayClip(boostSound);
+    }
+
+    public void StopBoostSound() {
+        StopAllCoroutines();
+    }
+
+    void PlayBGM(AudioClip clip) {
+        // Play background music
+        bgm.clip = clip;
+        bgm.Play();
+    }
+
+    public void PlayGameBGM() {
+        PlayBGM(bgmClip);
+    }
+
+    void StopBGM() {
+        bgm.Stop();
+    }
+
+    public void StopMenuBGM() {
+        StopBGM();
     }
 }

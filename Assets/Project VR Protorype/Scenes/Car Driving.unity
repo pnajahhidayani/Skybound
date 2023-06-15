@@ -2420,6 +2420,7 @@ MonoBehaviour:
   timeText: {fileID: 1614689079}
   gameOver: {fileID: 446600171}
   continousMoveProvider: {fileID: 151924874}
+  isGameStart: 0
 --- !u!4 &911785805
 Transform:
   m_ObjectHideFlags: 0
@@ -2601,7 +2602,9 @@ MonoBehaviour:
   engineSound: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   coinSound: {fileID: 8300000, guid: 102fe8c13d9e7294cbf2d1ffb3cb3106, type: 3}
   explosionSound: {fileID: 8300000, guid: 9bc87eac1cc27aa488cfd8831f0104de, type: 3}
-  boostSound: {fileID: 0}
+  boostSound: {fileID: 8300000, guid: 5478498245e2910438e3427b5a8f0e15, type: 3}
+  bgm: {fileID: 1078440321}
+  bgmClip: {fileID: 8300000, guid: 7cd7a8fa69007284bad3307e6ccfb2da, type: 3}
 --- !u!4 &1078440323
 Transform:
   m_ObjectHideFlags: 0

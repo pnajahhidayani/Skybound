@@ -16,10 +16,15 @@ public class PlayerControllerX : MonoBehaviour
     private float timeElapsed;
     public GameObject gameOver;
     public ContinuousMoveProviderBase continousMoveProvider;
+    public bool isGameStart;
+    public
 
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.StopMenuBGM();
+        AudioManager.instance.PlayGameBGM();
+        Invoke("StartGame", 3);
         continousMoveProvider.enabled = true;
         AudioManager.instance.PlayEngineSound(gameObject);
         scoreText.gameObject.SetActive(true);
@@ -32,12 +37,17 @@ public class PlayerControllerX : MonoBehaviour
     {
         timeElapsed += Time.deltaTime;
 
-        if (!gameOver.activeSelf) // Check if game over screen is not active
+        if (!gameOver.activeSelf && isGameStart) // Check if game over screen is not active
         {
             horizontalInput = Input.GetAxis("Horizontal");
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
         }
+    }
+
+    void StartGame()
+    {
+        isGameStart = true;
     }
 
     void OnTriggerEnter(Collider other)

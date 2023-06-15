@@ -8,6 +8,10 @@ public class MenuController : MonoBehaviour
   public GameObject aboutPanel;
   public GameObject mainPanel;
 
+  void Start() {
+    AudioManager.instance.PlayGameBGM();
+  }
+
   public void StartBtn() {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
   }
