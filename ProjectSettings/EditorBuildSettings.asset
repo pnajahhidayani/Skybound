@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Project VR Protorype/Scenes/Game Over.unity
+    path: Assets/Project VR Protorype/Scenes/Main Menu.unity
     guid: d232c98b2d07f2b4b8252eb9f2115bce
   - enabled: 1
     path: Assets/Project VR Protorype/Scenes/Car Driving.unity
