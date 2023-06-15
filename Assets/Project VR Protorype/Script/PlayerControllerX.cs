@@ -9,12 +9,17 @@ public class PlayerControllerX : MonoBehaviour
     private float turnSpeed = 45;
     public float horizontalInput;
     public int score = 0;
-    public TextMeshPro scoreText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI timeText;
+    private float timeElapsed;
     public GameObject gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.PlayEngineSound(gameObject);
+        scoreText.gameObject.SetActive(true);
         scoreText.text = "Score: " + score;
         gameOver.SetActive(false);
     }
@@ -22,6 +27,8 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeElapsed += Time.deltaTime;
+
         if (!gameOver.activeSelf) // Check if game over screen is not active
         {
             horizontalInput = Input.GetAxis("Horizontal");
@@ -35,6 +42,7 @@ public class PlayerControllerX : MonoBehaviour
             score++;
             Destroy(other.gameObject);
             scoreText.text = "Score: " + score;
+            AudioManager.instance.PlayCoinSound();
         }
     }
 
@@ -43,7 +51,11 @@ public class PlayerControllerX : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             gameOver.SetActive(true);
-            Debug.Log("Game Over!");
+            finalScoreText.text = "Score: " + score;
+            timeText.text = "Time: " + Mathf.RoundToInt(timeElapsed) + "s";
+            scoreText.gameObject.SetActive(false);
+            AudioManager.instance.StopEngineSound(gameObject);
+            AudioManager.instance.PlayExplosionSound();
         }
     }
 }
