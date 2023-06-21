@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Project VR Protorype/Scenes/Main Menu.unity
     guid: d232c98b2d07f2b4b8252eb9f2115bce
   - enabled: 1
+    path: Assets/Project VR Protorype/Scenes/Story.unity
+    guid: 6e698cbbeb0a15d4795b93123730c4bf
+  - enabled: 1
     path: Assets/Project VR Protorype/Scenes/Car Driving.unity
     guid: 02ccc450b48abeb43a414ab5c7e2d07d
   m_configObjects:
